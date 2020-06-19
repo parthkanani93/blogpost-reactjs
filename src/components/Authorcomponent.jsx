@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ListGroup, ListGroupItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class Author extends Component {
     constructor(props) {
@@ -11,10 +12,12 @@ class Author extends Component {
 
             <div className="container" >
 
-                {this.props.author.map((name) =>
+                {this.props.author.map((data) =>
                     <div className="row md-5 d-flex justify-content-center">
                         <ListGroup className="container-md">
-                            <ListGroupItem > {name.firstName}</ListGroupItem>
+                            <Link to={`/author/${data.id}`}>
+                                <ListGroupItem > {data.firstName}</ListGroupItem>
+                            </Link>
                         </ListGroup>
 
 

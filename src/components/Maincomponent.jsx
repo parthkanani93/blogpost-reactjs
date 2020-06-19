@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import Author from './Authorcomponent';
+import AuthorDetails from './AuthorDetails';
 
 class Main extends Component {
     constructor(props) {
@@ -19,13 +21,31 @@ class Main extends Component {
     }
 
     render() {
+
+        const AuthorWithId = ({ match }) => {
+            return (
+
+                <div>
+                    <AuthorDetails author={this.state.author.filter((author) => (author.id) === (match.params.authorid))[0]}
+                    />
+
+                </div>
+            );
+
+
+        }
         return (
             <div>
-                <Author author={this.state.author} />
+
+                <Switch>
+                    <Route exact path="/author" component={() => <Author author={this.state.author} />} />
+                    <Route path="/author/:authorid" component={AuthorWithId} />
+                    <Redirect to="/author" />
+                </Switch>
 
             </div>
         );
     }
 }
 
-export default Main;
+export default withRouter(Main);
