@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 
 
@@ -23,14 +24,16 @@ function RenderAuthor({ author }) {
 function RenderPost({ post }) {
     return (
         <div className="col-12 col-md-5 m-1">
-             <h1>Author post</h1>
-           {post.map((post)=>
+            <h1>Author posts</h1>
+            {post.map((post) =>
                 <Card>
-                <CardBody>
-                    <CardTitle>{post.title}</CardTitle>
-                </CardBody>
-            </Card>
-           )}
+                    <CardBody>
+                        <Link to={`/author/${post.authorId}/${post.id}`}>
+                            <CardTitle>{post.title}</CardTitle>
+                        </Link>
+                    </CardBody>
+                </Card>
+            )}
         </div>
     );
 }

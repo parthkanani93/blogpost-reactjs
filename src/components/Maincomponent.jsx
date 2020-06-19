@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import Author from './Authorcomponent';
 import AuthorDetails from './AuthorDetails';
+import Postdetails from './Postdetails';
 
 class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
             author: [],
-            post : []
+            post: [],
+            comment :[]
         }
 
 
@@ -18,6 +20,7 @@ class Main extends Component {
     componentDidMount() {
         fetch('http://localhost:3001/authors').then(responce => responce.json()).then(user => { this.setState({ author: user }) })
         fetch('http://localhost:3001/posts').then(responce => responce.json()).then(user => { this.setState({ post: user }) })
+        fetch('http://localhost:3001/comments').then(responce => responce.json()).then(user => { this.setState({ post: user }) })
 
 
 
@@ -30,22 +33,30 @@ class Main extends Component {
 
                 <div>
                     <AuthorDetails author={this.state.author.filter((author) => (author.id) === (match.params.authorid))[0]}
-                        post={this.state.post.filter((post)=> post.authorId === parseInt(match.params.authorid))}
-                        
-                    
+                        post={this.state.post.filter((post) => post.authorId === parseInt(match.params.authorid))}
+
+
                     />
 
                 </div>
             );
 
+        }
+        const PostwithId = ({ match }) => {
+            return (
+                <div>
+                    <Postdetails post={this.state.post.filter((post) => post.authorId === parseInt(match.params.authorid))[0]} />
+                </div>
 
+            );
         }
         return (
             <div>
 
                 <Switch>
                     <Route exact path="/author" component={() => <Author author={this.state.author} />} />
-                    <Route path="/author/:authorid" component={AuthorWithId} />
+                    <Route exact path="/author/:authorid" component={AuthorWithId} />
+                    <Route path="/author/:authorid/:postid" component={PostwithId} />
                     <Redirect to="/author" />
                 </Switch>
 
