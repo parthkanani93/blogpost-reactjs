@@ -7,7 +7,8 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            author: []
+            author: [],
+            post : []
         }
 
 
@@ -16,6 +17,8 @@ class Main extends Component {
     }
     componentDidMount() {
         fetch('http://localhost:3001/authors').then(responce => responce.json()).then(user => { this.setState({ author: user }) })
+        fetch('http://localhost:3001/posts').then(responce => responce.json()).then(user => { this.setState({ post: user }) })
+
 
 
     }
@@ -27,6 +30,9 @@ class Main extends Component {
 
                 <div>
                     <AuthorDetails author={this.state.author.filter((author) => (author.id) === (match.params.authorid))[0]}
+                        post={this.state.post.filter((post)=> post.authorId === parseInt(match.params.authorid))}
+                        
+                    
                     />
 
                 </div>
