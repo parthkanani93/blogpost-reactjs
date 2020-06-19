@@ -39,9 +39,7 @@ function RenderPost({ post }) {
 }
 
 class AuthorDetails extends Component {
-    constructor(props) {
-        super(props);
-    }
+ 
 
     render() {
         return (

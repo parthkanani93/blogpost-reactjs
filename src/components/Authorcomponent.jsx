@@ -3,10 +3,6 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 class Author extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
 

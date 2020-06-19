@@ -20,7 +20,7 @@ class Main extends Component {
     componentDidMount() {
         fetch('http://localhost:3001/authors').then(responce => responce.json()).then(user => { this.setState({ author: user }) })
         fetch('http://localhost:3001/posts').then(responce => responce.json()).then(user => { this.setState({ post: user }) })
-        fetch('http://localhost:3001/comments').then(responce => responce.json()).then(user => { this.setState({ post: user }) })
+        fetch('http://localhost:3001/comments').then(responce => responce.json()).then(user => { this.setState({ comment: user }) })
 
 
 
@@ -45,7 +45,8 @@ class Main extends Component {
         const PostwithId = ({ match }) => {
             return (
                 <div>
-                    <Postdetails post={this.state.post.filter((post) => post.authorId === parseInt(match.params.authorid))[0]} />
+                    <Postdetails post={this.state.post.filter((post) => post.authorId === parseInt(match.params.authorid))[0]} 
+                    comment={this.state.comment.filter((comment)=>comment.postId === parseInt(match.params.postid))}/>
                 </div>
 
             );
