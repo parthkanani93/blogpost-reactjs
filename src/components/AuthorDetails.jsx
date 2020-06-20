@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 
 function RenderAuthor({ author }) {
     return (
-        <div className="col-12 col-md-5 m-1">
-            <Card>
-                <CardBody>
-                    <h1>Author Details</h1>
+      
+            <Card >
+                <CardBody style={{backgroundColor : "#EBEBEB"}}>
+                    <h2>Author Details</h2>
                     <CardTitle>Author First Name :- {author.firstName}</CardTitle>
                     <CardText>Author Last Name :- {author.lastName}</CardText>
                     <CardText>Author Phone No :-{author.phone}</CardText>
@@ -18,16 +18,17 @@ function RenderAuthor({ author }) {
                     <CardText>Author Number of Comments :-{author.numComments}</CardText>
                 </CardBody>
             </Card>
-        </div>
+    
     );
 }
 function RenderPost({ post }) {
     return (
-        <div className="col-12 col-md-5 m-1">
-            <h1>Author posts</h1>
+        <div>
+
+            <h2>Author posts</h2>
             {post.map((post) =>
                 <Card>
-                    <CardBody>
+                    <CardBody style={{backgroundColor : "#EBEBEB"}}>
                         <Link to={`/author/${post.authorId}/${post.id}`}>
                             <CardTitle>{post.title}</CardTitle>
                         </Link>
@@ -39,17 +40,21 @@ function RenderPost({ post }) {
 }
 
 class AuthorDetails extends Component {
- 
+
 
     render() {
         return (
 
             <div className="container">
-                <div className="row">
-                    <RenderAuthor author={this.props.author} />
+                <div className="row d-flex justify-content-center" >
+                    <div className="col-8">
+                        <RenderAuthor author={this.props.author} />
+                    </div>
                 </div>
-                <div className="row">
-                    <RenderPost post={this.props.post} />
+                <div className="row d-flex justify-content-center">
+                    <div className="col-6">
+                        <RenderPost post={this.props.post} />
+                    </div>
                 </div>
 
             </div>

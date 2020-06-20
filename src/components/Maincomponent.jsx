@@ -67,6 +67,7 @@ class Main extends Component {
         }
         return (
             <div>
+                <h1>Blog Posts</h1>
 
                 <Switch>
                     <Route exact path="/author" component={() => <Author author={currentPosts}
@@ -75,7 +76,7 @@ class Main extends Component {
                      paginate={paginate}  />} />
                     <Route exact path="/author/:authorid" component={AuthorWithId} />
                     <Route path="/author/:authorid/:postid" component={PostwithId} />
-                    {/* <Redirect to="/author" /> */}
+                    <Redirect to="/author" />
                 </Switch>
               
 

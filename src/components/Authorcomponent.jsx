@@ -7,24 +7,34 @@ class Author extends Component {
     render() {
         return (
 
-            <div className="container" >
+            <div className="container mt-4" >
 
-                {this.props.author.map((data) =>
-                    <div className="row md-5 d-flex justify-content-center">
-                        <ListGroup className="container-md">
-                            <Link to={`/author/${data.id}`}>
-                                <ListGroupItem > {data.firstName}</ListGroupItem>
-                            </Link>
-                        </ListGroup>
+                <div className="row d-flex justify-content-center " >
+                    <div className="col-6"  >
+                        {this.props.author.map((data) =>
+
+                            <ListGroup className="container-md" >
+                                <Link to={`/author/${data.id}`}>
+                                    <ListGroupItem style={{backgroundColor : "#EBEBEB"}}> {data.firstName}</ListGroupItem>
+                                </Link>
+                            </ListGroup>
 
 
+
+                        )}
                     </div>
-                )}
 
-                <Pagination  postsPerPage={this.props.postsPerPage}
-                totalPosts={this.props.totalPosts}
-                paginate={this.props.paginate}
-                />
+
+                </div>
+                <div className="row d-flex justify-content-center mt-4">
+                    <Pagination postsPerPage={this.props.postsPerPage}
+                        totalPosts={this.props.totalPosts}
+                        paginate={this.props.paginate}
+                    />
+
+                </div>
+
+
 
 
 

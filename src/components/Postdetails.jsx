@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom';
 
 function RenderPost({ post }) {
     return (
-        <div className="col-12 col-md-5 m-1">
+        
 
 
             <Card>
-                <h1>Post Details</h1>
-                <CardBody>
+                
+                <CardBody style={{backgroundColor : "#EBEBEB"}}>
+                <h2>Post Details</h2>
 
-                    <CardTitle><h3>{post.title}</h3></CardTitle>
+                    <CardTitle><h4>{post.title}</h4></CardTitle>
                     <CardText>datePublished :- {post.datePublished}</CardText>
                     <CardText>number of likes :-{post.numLikes}</CardText>
                     <CardText>Description :-{post.description}</CardText>
@@ -20,20 +21,20 @@ function RenderPost({ post }) {
                 </CardBody>
             </Card>
 
-        </div>
+    
     );
 }
 
 function RenderComment({ comment }) {
     return (
-        <div className="col-12 col-md-5 m-1">
-            <h1>Post Comments</h1>
+        <div>
+            <h2>Post Comments</h2>
             {comment.map((comment) =>
                 <Card>
-                    <CardBody>
-                        <CardText><h3>{comment.text}</h3></CardText>
-                        <Link to={`/author/${comment.authorId}`}> 
-                            <CardText><h6>Author</h6></CardText>
+                    <CardBody style={{backgroundColor : "#EBEBEB"}}>
+                        <CardText><h4>{comment.text}</h4></CardText>
+                        <Link to={`/author/${comment.authorId}`}>
+                            <CardText><h7>Author</h7></CardText>
                         </Link>
 
                     </CardBody>
@@ -50,13 +51,21 @@ class Postdetails extends Component {
 
         return (
             <div className="container">
-                <div className="row">
+                <div className="row d-flex justify-content-center">
+                    <div>
+                        <RenderPost post={this.props.post} />
 
-                    <RenderPost post={this.props.post} />
+                    </div>
+
+
 
                 </div>
-                <div className="row">
-                    <RenderComment comment={this.props.comment} />
+                <div className="row d-flex justify-content-center">
+                    <div>
+                        <RenderComment comment={this.props.comment} />
+
+                    </div>
+
 
                 </div>
 
