@@ -4,13 +4,17 @@ import Author from './Authorcomponent';
 import AuthorDetails from './AuthorDetails';
 import Postdetails from './Postdetails';
 
+
 class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
             author: [],
             post: [],
-            comment :[]
+            comment: [],
+            currentPage: 1,
+            postsPerPage: 50
+
         }
 
 
@@ -26,7 +30,17 @@ class Main extends Component {
 
     }
 
+
     render() {
+
+        const indexOfLastPost = this.state.currentPage * this.state.postsPerPage;
+        const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage;
+        const currentPosts = this.state.author.slice(indexOfFirstPost, indexOfLastPost);
+
+        const paginate = pageNumber =>{this.setState({currentPage : pageNumber})}
+   
+
+       
 
         const AuthorWithId = ({ match }) => {
             return (
@@ -45,8 +59,8 @@ class Main extends Component {
         const PostwithId = ({ match }) => {
             return (
                 <div>
-                    <Postdetails post={this.state.post.filter((post) => post.authorId === parseInt(match.params.authorid))[0]} 
-                    comment={this.state.comment.filter((comment)=>comment.postId === parseInt(match.params.postid))}/>
+                    <Postdetails post={this.state.post.filter((post) => post.authorId === parseInt(match.params.authorid))[0]}
+                        comment={this.state.comment.filter((comment) => comment.postId === parseInt(match.params.postid))} />
                 </div>
 
             );
@@ -55,11 +69,15 @@ class Main extends Component {
             <div>
 
                 <Switch>
-                    <Route exact path="/author" component={() => <Author author={this.state.author} />} />
+                    <Route exact path="/author" component={() => <Author author={currentPosts}
+                     postsPerPage={this.state.postsPerPage} 
+                     totalPosts={this.state.author.length} 
+                     paginate={paginate}  />} />
                     <Route exact path="/author/:authorid" component={AuthorWithId} />
                     <Route path="/author/:authorid/:postid" component={PostwithId} />
-                    <Redirect to="/author" />
+                    {/* <Redirect to="/author" /> */}
                 </Switch>
+              
 
             </div>
         );

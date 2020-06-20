@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import Pagination from './Paginatecomponent';
 
 class Author extends Component {
     render() {
@@ -19,6 +20,13 @@ class Author extends Component {
 
                     </div>
                 )}
+
+                <Pagination  postsPerPage={this.props.postsPerPage}
+                totalPosts={this.props.totalPosts}
+                paginate={this.props.paginate}
+                />
+
+
 
 
             </div>
