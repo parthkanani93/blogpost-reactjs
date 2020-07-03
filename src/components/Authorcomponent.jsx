@@ -13,7 +13,7 @@ class Author extends Component {
 
                     {this.props.author.map((data) =>
 
-                        <Card body inverse style={{ backgroundColor: '#95dada', borderColor: '#95dada', color: 'black' }} className="col-12 col-sm-3 mx-3 my-3 card-container ">
+                        <Card body inverse key={data.id} style={{ backgroundColor: '#95dada', borderColor: '#95dada', color: 'black' }} className="col-12 col-sm-3 mx-3 my-3 card-container ">
                             <CardBody style={{ backgroundColor: "#EBEBEB" }}>
                                 <Link to={`/author/${data.id}`}>
                                     <CardText ><svg class="bi bi-person-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

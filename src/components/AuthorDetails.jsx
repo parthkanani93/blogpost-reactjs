@@ -76,7 +76,7 @@ function RenderPost({ post }) {
             <Button onClick={() => order(post)} color="warning">Date Wise</Button>{'   '} <Button color="danger">Like Wise</Button>
             <div className="row d-flex justify-content-center " style={{ backgroundColor: 'lightblack' }} >
                 {post.map((post) =>
-                    <Card body inverse style={{ backgroundColor: '#95dada', borderColor: '#95dada', color: 'black' }} className="col-12 col-sm-3 mx-3 my-3 card-container ">
+                    <Card body key={post.id} inverse style={{ backgroundColor: '#95dada', borderColor: '#95dada', color: 'black' }} className="col-12 col-sm-3 mx-3 my-3 card-container ">
                         <CardBody style={{ backgroundColor: "#EBEBEB" }}>
                             <Link to={`/author/${post.authorId}/${post.id}`}>
                                 <CardTitle>
