@@ -22,13 +22,14 @@ class Main extends Component {
 
     }
     componentDidMount() {
-        fetch('http://localhost:3001/authors').then(responce => responce.json()).then(user => { this.setState({ author: user }) })
-        fetch('http://localhost:3001/posts').then(responce => responce.json()).then(user => { this.setState({ post: user }) })
-        fetch('http://localhost:3001/comments').then(responce => responce.json()).then(user => { this.setState({ comment: user }) })
+        fetch('https://mohitfakedata.azurewebsites.net/authors').then(responce => responce.json()).then(user => { this.setState({ author: user }) })
+        fetch('https://mohitfakedata.azurewebsites.net/posts').then(responce => responce.json()).then(user => { this.setState({ post: user }) })
+        fetch('https://mohitfakedata.azurewebsites.net/comments').then(responce => responce.json()).then(user => { this.setState({ comment: user }) })
 
 
 
     }
+    
 
 
     render() {
