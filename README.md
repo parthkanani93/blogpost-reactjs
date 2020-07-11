@@ -7,3 +7,5 @@ step 3 :- clone the blogpost project link :- https://github.com/parthkanani93/bl
 step 4 :- yarn install
 
 step 5 :- yarn start
+
+video link :- https://youtu.be/OfkUwp7NFwc
